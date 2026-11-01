@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+env/
+
+# Data (large – download on first run)
+data/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# W&B local files
+wandb/
+
+# PyCharm / VS Code
+.idea/
+.vscode/
+
+# macOS
+.DS_Store

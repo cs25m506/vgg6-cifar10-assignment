@@ -1,0 +1,16 @@
+Run,Activation,Optimizer,Batch Size,LR,Epochs,Best Val Acc,W&B URL
+act=gelu_opt=adam_bs=128_lr=0.001_ep=30,gelu,adam,128,0.001,30,89.44%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/x64xr5vo
+act=silu_opt=adam_bs=128_lr=0.001_ep=30,silu,adam,128,0.001,30,89.14%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/alcaeg07
+act=relu_opt=adam_bs=128_lr=0.001_ep=30,relu,adam,128,0.001,30,88.15%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/0n5ulmjw
+act=relu_opt=adam_bs=128_lr=0.001_ep=30,relu,adam,128,0.001,30,88.15%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/qau4c0aw
+act=relu_opt=nadam_bs=128_lr=0.001_ep=30,relu,nadam,128,0.001,30,87.99%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/buj5uou2
+act=relu_opt=sgd_bs=128_lr=0.01_ep=30,relu,sgd,128,0.01,30,87.63%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/t6senl5a
+act=relu_opt=nesterov_sgd_bs=128_lr=0.01_ep=30,relu,nesterov_sgd,128,0.01,30,87.57%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/ds7carau
+act=tanh_opt=adam_bs=128_lr=0.001_ep=30,tanh,adam,128,0.001,30,82.23%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/sh0p8ohx
+act=relu_opt=adam_bs=64_lr=0.001_ep=10,relu,adam,64,0.001,10,81.48%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/pmpu4icc
+act=relu_opt=adam_bs=64_lr=0.001_ep=10,relu,adam,64,0.001,10,81.48%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/w33ytxkq
+act=relu_opt=adam_bs=64_lr=0.0001_ep=10,relu,adam,64,0.0001,10,77.40%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/lm83xd95
+act=relu_opt=adam_bs=64_lr=0.0001_ep=10,relu,adam,64,0.0001,10,77.40%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/p0gpte8j
+act=relu_opt=rmsprop_bs=128_lr=0.001_ep=30,relu,rmsprop,128,0.001,30,76.24%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/4df3pgnk
+act=relu_opt=adagrad_bs=128_lr=0.001_ep=30,relu,adagrad,128,0.001,30,73.58%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/xd9ckv0y
+act=sigmoid_opt=adam_bs=128_lr=0.001_ep=30,sigmoid,adam,128,0.001,30,44.62%,https://wandb.ai/balaji-kulkarni92/CS6886W-A1-VGG6-CIFAR10/runs/9vlfwg0v

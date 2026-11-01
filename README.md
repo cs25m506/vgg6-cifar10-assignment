@@ -32,23 +32,12 @@
 
 ---
 
-## 🔍 Overview
+## Overview
 
 This repository implements a **VGG6** convolutional neural network trained on **CIFAR-10** to systematically compare:
-
-| Question | What is varied | # Runs |
-|----------|---------------|--------|
-| Q1       | Best single configuration (ReLU + Adam) | 1 |
-| Q2(a)    | 5 activation functions | 5 |
-| Q2(b)    | 6 optimisers | 6 |
-| Q2(c)    | Batch size × LR × epochs grid | 12 |
-| **Total**|  | **24** |
-
-All 24 runs are automatically tracked on **W&B** with per-epoch metrics, best-val-acc summaries, and a Parallel Coordinates sweep view.
-
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 vgg6-cifar10-assignment/
@@ -85,7 +74,7 @@ vgg6-cifar10-assignment/
 
 ---
 
-## 🧠 VGG6 Architecture
+## VGG6 Architecture
 
 ```
 Input (3 × 32 × 32)
@@ -112,7 +101,7 @@ Input (3 × 32 × 32)
 
 ---
 
-## 💻 Installation — Local
+## Installation — Local
 
 ### 1. Clone the repo
 
@@ -153,7 +142,7 @@ wandb login                            # or run this interactively
 
 ---
 
-## 🚀 Running on Google Colab
+## Running on Google Colab
 
 > **All experiments can be run entirely in Google Colab — no local GPU required.**  
 > The companion notebook at `notebooks/CS6886W_A1.ipynb` drives every step.
@@ -197,8 +186,6 @@ Click the badge at the top of this README:
 ---
 
 ### Step 4 — Enable GPU Runtime
-
-> ⚠️ Always do this **before** running any cells — you cannot switch runtime mid-session.
 
 1. In Colab: **Runtime → Change runtime type**.
 2. Set **Hardware accelerator** = `T4 GPU` (free) or `A100` (Colab Pro).
@@ -444,160 +431,6 @@ fig5.show()
 ```
 
 ---
-
-## 📊 W&B Dashboard & Plots
-
-### Accessing your project dashboard
-
-After completing all runs:
-
-```
-https://wandb.ai/<YOUR_WANDB_USERNAME>/CS6886W-A1-VGG6-CIFAR10
-```
-
----
-
-### Building the required plots in W&B
-
-#### Line chart — Training & Validation Loss/Accuracy
-
-1. Go to your project → **Workspace** tab.
-2. Click **+ Add panel** → **Line chart**.
-3. Y-axis: `train/loss` or `val/acc` · X-axis: `epoch`.
-4. To overlay multiple runs: use **Run Sets** → filter by run name prefix (e.g. `Q2a_`).
-5. Click **Apply** to save the panel.
-
-#### Scatter plot — Best Val Acc across runs
-
-1. **+ Add panel** → **Scatter plot**.
-2. X-axis: `best_val_acc` · Y-axis: `best_val_acc` (or any config key).
-3. Color by: `optimizer` or `activation`.
-
-#### Parallel Coordinates plot (Q3 sweep view)
-
-1. **+ Add panel** → **Parallel Coordinates**.
-2. Add axes in this order:
-   - `activation`
-   - `optimizer`
-   - `batch_size`
-   - `lr`
-   - `num_epochs`
-   - `best_val_acc` ← the target column (colour by this)
-3. Click **Apply**.
-4. Drag sliders on each axis to filter runs interactively.
-
-#### Exporting a plot as PNG
-
-1. Hover over any panel → click **⋮ (three dots)** → **Download → PNG / SVG**.
-
-#### Sharing a W&B Report
-
-1. Click **Reports** → **+ New report**.
-2. Drag panels from your workspace into the report.
-3. Click **Publish** (top-right) → copy the public link.
-
----
-
-## 📈 Results
-
-> ✏️ *Fill in after running all experiments. Placeholder values shown below.*
-
-### Q2(a) — Activation Functions
-
-| Activation | Best Val Acc (%) |
-|------------|-----------------|
-| ReLU       | —               |
-| Sigmoid    | —               |
-| Tanh       | —               |
-| SiLU       | —               |
-| GELU       | —               |
-
-### Q2(b) — Optimisers
-
-| Optimiser     | LR     | Best Val Acc (%) |
-|---------------|--------|-----------------|
-| SGD           | 0.01   | —               |
-| Nesterov SGD  | 0.01   | —               |
-| Adam          | 1e-3   | —               |
-| Adagrad       | 1e-2   | —               |
-| RMSprop       | 1e-3   | —               |
-| NAdam         | 1e-3   | —               |
-
-### Q2(c) — Hyperparameters
-
-**Batch size** (Adam, lr=1e-3, 30 epochs)
-
-| Batch Size | Best Val Acc (%) |
-|------------|-----------------|
-| 32         | —               |
-| 64         | —               |
-| 128        | —               |
-| 256        | —               |
-
-**Learning rate** (Adam, bs=128, 30 epochs)
-
-| LR    | Best Val Acc (%) |
-|-------|-----------------|
-| 1e-4  | —               |
-| 5e-4  | —               |
-| 1e-3  | —               |
-| 5e-3  | —               |
-
-**Epochs** (Adam, lr=1e-3, bs=128)
-
-| Epochs | Best Val Acc (%) |
-|--------|-----------------|
-| 10     | —               |
-| 20     | —               |
-| 30     | —               |
-| 50     | —               |
-
----
-
-## ⚙️ Project Configuration
-
-All defaults live in `configs/base_config.py` — override any key via CLI flag:
-
-| Parameter        | Default                    | CLI flag            |
-|------------------|---------------------------|---------------------|
-| `activation`     | `relu`                    | `--activation`      |
-| `optimizer`      | `adam`                    | `--optimizer`       |
-| `lr`             | `1e-3`                    | `--lr`              |
-| `weight_decay`   | `5e-4`                    | `--weight_decay`    |
-| `batch_size`     | `128`                     | `--batch_size`      |
-| `num_epochs`     | `30`                      | `--num_epochs`      |
-| `seed`           | `42`                      | `--seed`            |
-| `data_dir`       | `./data`                  | `--data_dir`        |
-| `checkpoint_dir` | `./checkpoints`           | `--checkpoint_dir`  |
-| `wandb_project`  | `CS6886W-A1-VGG6-CIFAR10` | `--wandb_project`   |
-| `wandb_entity`   | *(wandb default)*         | `--wandb_entity`    |
-
-### Evaluate a saved checkpoint
-
-```bash
-python evaluate.py --checkpoint checkpoints/Q1_baseline_relu_adam_best.pth
-```
-
-Expected output:
-```
-Loaded checkpoint from: checkpoints/Q1_baseline_relu_adam_best.pth
-  epoch = 27, saved val_acc = 85.12%
-
-Test top-1 accuracy: 85.12%
-```
-
----
-
-## 🤝 Contributing
-
-1. Fork the repo
-2. Create a feature branch: `git checkout -b feature/my-change`
-3. Commit: `git commit -m "feat: describe your change"`
-4. Push: `git push origin feature/my-change`
-5. Open a Pull Request
-
----
-
 <p align="center">
   Made with ❤️ for CS6886W · Deep Learning Systems
 </p>
